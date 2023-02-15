@@ -49,17 +49,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Center(
-
-        child: Theme(
-          data: ThemeData(
-            cardColor: Colors.deepOrange,
+      body: Column(
+        children: <Widget>[
+          Theme(
+// Unique theme with ThemeData - Overwrite
+            data: ThemeData(
+              cardColor: Colors.deepOrange,
+            ),
+            child: Card(
+              child: Text('Unique ThemeData'),
+            ),
           ),
-          child: Card(
-            child: Text('Unique ThemeData'),
+          Theme(
+// copyWith Theme - Inherit (Extended)
+            data: Theme.of(context).copyWith(cardColor: Colors.deepOrange),
+            child: Card(
+              child: Text('copyWith Theme'),
+            ),
           ),
-        ),
-        ),
+        ],
+      ),
       );
 
   }
